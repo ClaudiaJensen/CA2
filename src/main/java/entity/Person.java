@@ -34,7 +34,7 @@ public class Person implements Serializable {
     private String fName;
     private String lName;
 
-   @OneToMany(mappedBy = "Person")
+   @OneToMany(mappedBy = "person")
    private final List<Phone> phones = new ArrayList();
    
    @ManyToMany(cascade = CascadeType.ALL)
@@ -61,9 +61,6 @@ public class Person implements Serializable {
         this.lName = lName;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getEmail() {
         return email;
