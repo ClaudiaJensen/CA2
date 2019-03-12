@@ -14,21 +14,21 @@ import java.util.List;
 public interface BusinessLogic
 {
 
-    public Person getPerson(String phoneNumber);
-
-    public List<Person> getPersonsByHobby(Hobby hobby);
-
-    public List<Person> getPersonsByCity(String city);
-
-    public int getCountPersonByHobby(Hobby hobby);
-
-    public List<CityInfo> getAllzipCodes();
-
-    //CRUD
-    public Person addPerson(Person p);
-
-    public Person deletePerson(Person p);
-
-    public Person updatePerson(Person p);
+//    public Person getPerson(String phoneNumber);
+//
+//    public List<Person> getPersonsByHobby(Hobby hobby);
+//
+//    public List<Person> getPersonsByCity(String city);
+//
+//    public int getCountPersonByHobby(Hobby hobby);
+//
+//    public List<CityInfo> getAllzipCodes();
+//
+//    //CRUD
+//    public Person addPerson(Person p);
+//
+//    public Person deletePerson(Person p);
+//
+//    public Person updatePerson(Person p);
     
 }
