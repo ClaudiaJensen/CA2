@@ -11,3 +11,4 @@ target
 /nbproject/
 
 */META-INF/*
+/src/main/resources/META-INF/persistence.xml

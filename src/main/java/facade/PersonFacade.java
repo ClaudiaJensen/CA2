@@ -36,7 +36,7 @@ public class PersonFacade implements BusinessLogic
     @Override
     public Person getPerson(String phoneNumber)
     {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       return getEntityManager().find(Person.class, phoneNumber);
     }
 
     @Override

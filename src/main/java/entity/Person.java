@@ -38,7 +38,7 @@ public class Person implements Serializable {
    private final List<Phone> phones = new ArrayList();
    
    @ManyToMany(cascade = CascadeType.ALL)
-   private final List<Hobby> hobbys = new ArrayList();
+   private final List<Hobby> hobbies = new ArrayList();
    
    @ManyToOne
    private Address addresses;
@@ -103,7 +103,7 @@ public class Person implements Serializable {
     }
 
    public void addHobby(Hobby h){
-       this.hobbys.add(h);
+       this.hobbies.add(h);
    }
    
    public void addPhone(Phone p){
@@ -119,7 +119,7 @@ public class Person implements Serializable {
     }
 
     public List<Hobby> getHobbys() {
-        return hobbys;
+        return hobbies;
     }
 
     public Address getAddresses() {
