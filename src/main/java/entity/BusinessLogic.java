@@ -27,7 +27,7 @@ public interface BusinessLogic
     //CRUD
     public Person addPerson(Person p);
 
-    public Person deletePerson(Person p);
+    public Person deletePerson(int id);
 
     public Person updatePerson(Person p);
     

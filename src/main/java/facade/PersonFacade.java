@@ -42,7 +42,15 @@ public class PersonFacade implements BusinessLogic
     @Override
     public List<Person> getPersonsByHobby(Hobby hobby)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         EntityManager em = getEntityManager();
+    try{
+            Query q = em.createQuery("Select p.fName, p.lName, p.email FROM Person p Where :hobby in p.hobbies ");
+            q.setParameter("hobby", hobby);
+            List<Person> res = q.getResultList();  
+            return res;
+        }finally{
+                 em.close();
+                }
     }
 
     @Override
@@ -66,19 +74,44 @@ public class PersonFacade implements BusinessLogic
     @Override
     public Person addPerson(Person p)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         EntityManager em = getEntityManager();
+          try{
+            em.getTransaction().begin();
+            em.persist(p);
+            em.getTransaction().commit();
+            return p;
+        }finally{
+            em.close();
+        }
     }
 
     @Override
-    public Person deletePerson(Person p)
+    public Person deletePerson(int id)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+    try{
+         em.getTransaction().begin();   
+        Person p = em.find(Person.class, id);
+        em.remove(p);
+        em.getTransaction().commit();
+        return p; 
+        }finally{
+                 em.close();
+                }
     }
 
     @Override
     public Person updatePerson(Person p)
     {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+              EntityManager em = getEntityManager();
+    try{
+            em.getTransaction().begin();
+            em.merge(p);
+            em.getTransaction().commit();
+            return p;     
+        }finally{
+                 em.close();
+                }      
     }
 
 }
