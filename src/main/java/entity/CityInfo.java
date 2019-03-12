@@ -23,28 +23,31 @@ public class CityInfo implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int zipCode;
-    private int city;
+    private String city;
     
     
 
     public CityInfo() {
     }
 
-    public CityInfo(int id, int zipCode, int city) {
+    public CityInfo(int id, int zipCode, String city) {
         this.id = id;
         this.zipCode = zipCode;
         this.city = city;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public CityInfo(int zipCode, String city) {
+        this.zipCode = zipCode;
+        this.city = city;
     }
+
+    
 
     public int getZipCode() {
         return zipCode;
     }
 
-    public int getCity() {
+    public String getCity() {
         return city;
     }
 
@@ -52,7 +55,7 @@ public class CityInfo implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public void setCity(int city) {
+    public void setCity(String city) {
         this.city = city;
     }
     
@@ -64,31 +67,6 @@ public class CityInfo implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (int) id;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CityInfo)) {
-            return false;
-        }
-        CityInfo other = (CityInfo) object;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Entitys.CityInfo[ id=" + id + " ]";
     }
     
 }

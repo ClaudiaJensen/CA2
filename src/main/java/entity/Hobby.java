@@ -43,8 +43,9 @@ public class Hobby implements Serializable {
         this.description = description;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    public Hobby(String name, String description) {
+        this.name = name;
+        this.description = description;
     }
 
     public String getName() {
@@ -73,29 +74,5 @@ public class Hobby implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (int) id;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Hobby)) {
-            return false;
-        }
-        Hobby other = (Hobby) object;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Entitys.Hobby[ id=" + id + " ]";
-    }
     
 }

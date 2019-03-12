@@ -5,6 +5,10 @@
  */
 package utils;
 
+import entity.Address;
+import entity.CityInfo;
+import entity.Hobby;
+import entity.Person;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -18,18 +22,62 @@ public class Tester {
     public static void main(String[] args) {
         Persistence.generateSchema("pu", null);
      
-//       
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//            em.getTransaction().begin();
-//
-//            em.getTransaction().commit();
-//            
-//        } finally {
-//            em.close();
-//        }
-//        
-//    }
+       
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            
+            //Oprettelse
+            //Par 1
+            Person p1 = new Person("gh@yahoo.com", "Lene", "Hansen");
+            Person p2 = new Person("kl@yahoo.com", "Dan", "Pedersen");
+            
+            //par 2
+            Person p3 = new Person("min@yahoo.com", "kir", "Johnsen");
+            Person p4 = new Person("din@yahoo.com", "Ib", "Jensen");
+            
+            Hobby h1 = new Hobby("Golf","Motionist niveau");
+            Hobby h2 = new Hobby("Badminton","Grøndal Center");
+            Hobby h3 = new Hobby("Fodbold","nyt hold");
+            Hobby h4 = new Hobby("Skydning","Motionist niveau");
+            
+            
+            Address ad1 = new Address("Århusgade 30", "Hjemmeadresse");
+            Address ad2 = new Address("viborggade 20", "Hjemmeaddress");
+            Address ad3 = new Address("Havnegade 11", "Hjemmeaddress");
+            
+            CityInfo ci1 = new CityInfo(2100, "København Ø");
+            CityInfo ci2 = new CityInfo(2000, "Århus C");
+            
+            //Adding
+            p1.addHobby(h1);
+            p1.addHobby(h2);
+            ad1.setCityInfo(ci1);
+            p1.setAddress(ad1);
+            
+            p2.addHobby(h1);
+            p2.setAddress(ad1);
+            
+            p3.addHobby(h3);
+            ad2.setCityInfo(ci2);
+            p3.setAddress(ad2);
+            
+            p4.addHobby(h4);
+            ad3.setCityInfo(ci2);
+            p4.setAddress(ad3);
+            
+            em.persist(p1);
+            em.persist(p1);
+            em.persist(p1);
+            em.persist(p1);
+            
+            em.getTransaction().commit();
+            
+        } finally {
+            em.close();
+        }
+        
+    }
 }
-}
+
