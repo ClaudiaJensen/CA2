@@ -23,7 +23,7 @@ public class Phone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int number;
+    private Integer number;
     private String description;
     
     
@@ -34,7 +34,7 @@ public class Phone implements Serializable {
     public Phone() {
     }
 
-    public Phone(int id, int number, String description) {
+    public Phone(int id, Integer number, String description) {
         this.id = id;
         this.number = number;
         this.description = description;
@@ -44,7 +44,7 @@ public class Phone implements Serializable {
         return serialVersionUID;
     }
 
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
@@ -90,9 +90,6 @@ public class Phone implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Entitys.Phone[ id=" + id + " ]";
-    }
+   
     
 }

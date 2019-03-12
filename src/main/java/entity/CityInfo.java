@@ -22,7 +22,7 @@ public class CityInfo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int zipCode;
+    private Integer zipCode;
     private String city;
     
     
@@ -30,20 +30,20 @@ public class CityInfo implements Serializable {
     public CityInfo() {
     }
 
-    public CityInfo(int id, int zipCode, String city) {
+    public CityInfo(int id, Integer zipCode, String city) {
         this.id = id;
         this.zipCode = zipCode;
         this.city = city;
     }
 
-    public CityInfo(int zipCode, String city) {
+    public CityInfo(Integer zipCode, String city) {
         this.zipCode = zipCode;
         this.city = city;
     }
 
     
 
-    public int getZipCode() {
+    public Integer getZipCode() {
         return zipCode;
     }
 
