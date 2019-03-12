@@ -82,8 +82,6 @@ public class Person implements Serializable {
         this.lName = lName;
     }
     
-    
-
     public int getId() {
         return id;
     }
@@ -97,4 +95,15 @@ public class Person implements Serializable {
         return "Entitys.Person[ id=" + id + " ]";
     }
 
+   public void addHobby(Hobby h){
+       this.hobbys.add(h);
+   }
+   
+   public void addPhone(Phone p){
+       this.phones.add(p);
+   }
+   
+   public void setAddress(Address a){
+       this.addresses = a;
+   }
 }

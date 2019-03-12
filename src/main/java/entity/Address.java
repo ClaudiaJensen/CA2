@@ -96,4 +96,8 @@ public class Address implements Serializable {
         return "Entitys.Address[ id=" + id + " ]";
     }
     
+    public void setCityInfo(CityInfo ci){
+        this.cityInfo = ci;
+    }
+    
 }
