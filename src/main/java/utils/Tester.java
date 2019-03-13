@@ -9,6 +9,7 @@ import entity.Address;
 import entity.CityInfo;
 import entity.Hobby;
 import entity.Person;
+import entity.Phone;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -20,7 +21,7 @@ import javax.persistence.Persistence;
 public class Tester {
    
     public static void main(String[] args) {
-        Persistence.generateSchema("pu", null);
+        //Persistence.generateSchema("pu", null);
      
        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
@@ -49,6 +50,17 @@ public class Tester {
             
             CityInfo ci1 = new CityInfo(2100, "København Ø");
             CityInfo ci2 = new CityInfo(2000, "Århus C");
+            
+            Phone ph1 = new Phone(777, "mobil");
+            Phone ph2 = new Phone(888, "mobil");
+            Phone ph3 = new Phone(999, "mobil");
+            Phone ph4 = new Phone(444, "mobil");
+            
+            p1.addPhone(ph1);
+            p2.addPhone(ph2);
+            p3.addPhone(ph3);
+            p4.addPhone(ph4);
+           
             
             //Adding
             p1.addHobby(h1);

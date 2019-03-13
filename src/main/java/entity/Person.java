@@ -34,11 +34,11 @@ public class Person implements Serializable {
     private String fName;
     private String lName;
 
-   @OneToMany(mappedBy = "Person")
+   @OneToMany(mappedBy = "person")
    private final List<Phone> phones = new ArrayList();
    
    @ManyToMany(cascade = CascadeType.ALL)
-   private final List<Hobby> hobbys = new ArrayList();
+   private final List<Hobby> hobbies = new ArrayList();
    
    @ManyToOne
    private Address addresses;
@@ -61,9 +61,6 @@ public class Person implements Serializable {
         this.lName = lName;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getEmail() {
         return email;
@@ -103,7 +100,7 @@ public class Person implements Serializable {
     }
 
    public void addHobby(Hobby h){
-       this.hobbys.add(h);
+       this.hobbies.add(h);
    }
    
    public void addPhone(Phone p){
@@ -119,7 +116,7 @@ public class Person implements Serializable {
     }
 
     public List<Hobby> getHobbys() {
-        return hobbys;
+        return hobbies;
     }
 
     public Address getAddresses() {
