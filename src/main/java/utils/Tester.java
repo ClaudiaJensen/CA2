@@ -60,6 +60,8 @@ public class Tester {
             p2.addPhone(ph2);
             p3.addPhone(ph3);
             p4.addPhone(ph4);
+            
+
            
             
             //Adding
@@ -80,9 +82,9 @@ public class Tester {
             p4.setAddress(ad3);
             
             em.persist(p1);
-            em.persist(p1);
-            em.persist(p1);
-            em.persist(p1);
+            em.persist(p2);
+            em.persist(p3);
+            em.persist(p4);
             
             em.getTransaction().commit();
             

@@ -5,14 +5,19 @@
  */
 package facade;
 
+import dto.PersonDTO;
 import entity.BusinessLogic;
 import entity.CityInfo;
 import entity.Hobby;
 import entity.Person;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
+
+
 
 /**
  *
@@ -20,8 +25,17 @@ import javax.persistence.Query;
  */
 public class PersonFacade implements BusinessLogic
 {
+    
+     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+    
+     
+    public EntityManager getManager() {
+        return emf.createEntityManager();
+    }
 
-    EntityManagerFactory emf;
+    
+    
+    public PersonFacade(){}
 
     public PersonFacade(EntityManagerFactory emf)
     {
@@ -112,6 +126,18 @@ public class PersonFacade implements BusinessLogic
         }finally{
                  em.close();
                 }      
+    }
+    
+    public List<PersonDTO> getAllPersonsDTO(){
+        EntityManager em = getManager();
+        List<PersonDTO> dtol = new ArrayList();
+        
+        List<Person> cs = em.createQuery("SELECT p FROM Person p").getResultList();
+        for (Person c: cs){
+            PersonDTO dto = new PersonDTO(c);
+            dtol.add(dto);
+        }
+        return dtol;
     }
 
 }

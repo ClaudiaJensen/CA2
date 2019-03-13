@@ -28,7 +28,7 @@ public class Phone implements Serializable {
     private String description;
     
     
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne
     private Person person;
     
     public Phone(int number, String description) {
@@ -39,10 +39,10 @@ public class Phone implements Serializable {
     public Phone() {
     }
     
-    public Phone(int number, String description) {
-        this.number = number;
-        this.description = description;
-    }
+//    public Phone(int number, String description) {
+//        this.number = number;
+//        this.description = description;
+//    }
 	
 
     public Phone(int id, Integer number, String description) {
@@ -99,6 +99,10 @@ public class Phone implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
    

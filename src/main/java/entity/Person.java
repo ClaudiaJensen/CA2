@@ -34,13 +34,13 @@ public class Person implements Serializable {
     private String fName;
     private String lName;
 
-   @OneToMany(mappedBy = "person")
+   @OneToMany(cascade = CascadeType.ALL , mappedBy = "person")
    private final List<Phone> phones = new ArrayList();
    
    @ManyToMany(cascade = CascadeType.ALL)
    private final List<Hobby> hobbies = new ArrayList();
    
-   @ManyToOne
+   @ManyToOne (cascade = CascadeType.PERSIST)
    private Address addresses;
    
     
