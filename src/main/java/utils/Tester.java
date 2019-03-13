@@ -21,14 +21,14 @@ import javax.persistence.Persistence;
 public class Tester {
    
     public static void main(String[] args) {
-        //Persistence.generateSchema("pu", null);
+       // Persistence.generateSchema("pu", null);
      
        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
+            
         try {
             em.getTransaction().begin();
-            
             //Oprettelse
             //Par 1
             Person p1 = new Person("gh@yahoo.com", "Lene", "Hansen");
@@ -44,7 +44,7 @@ public class Tester {
             Hobby h4 = new Hobby("Skydning","Motionist niveau");
             
             
-            Address ad1 = new Address("Århusgade 30", "Hjemmeadresse");
+            Address ad1 = new Address("Århusgade 30", "Hjemmeadress");
             Address ad2 = new Address("viborggade 20", "Hjemmeaddress");
             Address ad3 = new Address("Havnegade 11", "Hjemmeaddress");
             
@@ -56,41 +56,38 @@ public class Tester {
             Phone ph3 = new Phone(999, "mobil");
             Phone ph4 = new Phone(444, "mobil");
             
-            p1.addPhone(ph1);
-            p2.addPhone(ph2);
-            p3.addPhone(ph3);
-            p4.addPhone(ph4);
-            
-
-           
-            
             //Adding
+            ad1.setCityInfo(ci1);
+            ad2.setCityInfo(ci2);
+            ad3.setCityInfo(ci2);
+
+            p1.addPhone(ph1);
             p1.addHobby(h1);
             p1.addHobby(h2);
-            ad1.setCityInfo(ci1);
             p1.setAddress(ad1);
-            
+
+            p2.addPhone(ph2);
             p2.addHobby(h1);
             p2.setAddress(ad1);
-            
+
+            p3.addPhone(ph3);           
             p3.addHobby(h3);
-            ad2.setCityInfo(ci2);
             p3.setAddress(ad2);
-            
+
+            p4.addPhone(ph4);
             p4.addHobby(h4);
-            ad3.setCityInfo(ci2);
-            p4.setAddress(ad3);
+            p4.setAddress(ad3);            
             
             em.persist(p1);
             em.persist(p2);
             em.persist(p3);
             em.persist(p4);
-            
             em.getTransaction().commit();
             
         } finally {
             em.close();
         }
+            
         
     }
 }
