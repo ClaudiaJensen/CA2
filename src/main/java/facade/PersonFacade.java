@@ -60,7 +60,7 @@ public class PersonFacade implements FacadeInterface
         EntityManager em = getEntityManager();
         try
         {
-            Query q = em.createQuery("Select p.fName, p.lName, p.email FROM Person p Where :hobby in p.hobbies ");
+            Query q = em.createQuery("Select  p.email, p.fName, p.lName FROM Person p Where :hobby MEMBER of p.hobbies ");
             q.setParameter("hobby", hobby);
             List<Person> res = q.getResultList();
             return res;
@@ -68,6 +68,15 @@ public class PersonFacade implements FacadeInterface
         {
             em.close();
         }
+    }
+    public Hobby getHobbyById(int id ){
+         EntityManager em = getEntityManager();
+    try{   
+           Hobby h = em.find(Hobby.class, id);
+           return h;
+        }finally{
+                 em.close();
+                }    
     }
 
     @Override

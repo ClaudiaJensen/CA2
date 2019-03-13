@@ -5,8 +5,13 @@
  */
 package unitTest;
 
+import entity.Hobby;
+import entity.Person;
+import facade.PersonFacade;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -23,29 +28,23 @@ public class PersonFacadeTest
     {
     }
     
-    @BeforeClass
-    public static void setUpClass()
-    {
-    }
     
-    @AfterClass
-    public static void tearDownClass()
-    {
-    }
+    PersonFacade pf = new PersonFacade();
     
-    @Before
-    public void setUp()
-    {
+    @Test
+    public void getPersonsByHobbyTest(){
+       
+        Hobby h = pf.getHobbyById(4);
+        List<Person> list = pf.getPersonsByHobby(h);
+        Assert.assertEquals(2,list.size());
+        Assert.assertEquals("Dan", list.get(0).getfName());
+        Assert.assertEquals("Perdersen", list.get(0).getlName());
+       
     }
-    
-    @After
-    public void tearDown()
-    {
+    @Test
+    public void getHobbyByIdTest(){
+        Hobby h = pf.getHobbyById(4);
+        String exp = "Golf";
+        Assert.assertEquals(exp,h.getName());
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
 }
