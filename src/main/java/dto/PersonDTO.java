@@ -23,7 +23,7 @@ public class PersonDTO {
     private String lName;
     
     private List<String> phones = new ArrayList();
-    private List<String> hobbys = new ArrayList();
+    private List<String> hobbies = new ArrayList();
     
     
     
@@ -33,7 +33,7 @@ public class PersonDTO {
         this.fName = p.getfName();
         this.lName = p.getlName();
         this.phones = getPhones(p.getPhones());
-        this.hobbys = getHobbys(p.getHobbys());
+        this.hobbies = getHobbies(p.getHobbies()); 
     }
     
     public List<String> getPhones(List<Phone> pList){
@@ -45,7 +45,7 @@ public class PersonDTO {
         return sList;
     }
     
-     public List<String> getHobbys(List<Hobby> hList){
+     public List<String> getHobbies(List<Hobby> hList){
         List<String> sList = new ArrayList();
         for (Hobby h: hList){
             String s = "Name: " + h.getName() + "description: " + h.getDescription() + "  ";

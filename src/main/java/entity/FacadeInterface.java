@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author claudia
  */
-public interface BusinessLogic
+public interface FacadeInterface
 {
 
     public Person getPerson(String phoneNumber);

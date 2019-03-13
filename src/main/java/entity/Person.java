@@ -115,7 +115,7 @@ public class Person implements Serializable {
         return phones;
     }
 
-    public List<Hobby> getHobbys() {
+    public List<Hobby> getHobbies() {
         return hobbies;
     }
 
