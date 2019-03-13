@@ -30,6 +30,10 @@ public class Phone implements Serializable {
     @ManyToOne
     private Person person;
     
+    public Phone(int number, String description) {
+        this.number = number;
+        this.description = description;
+    }
     
     public Phone() {
     }
