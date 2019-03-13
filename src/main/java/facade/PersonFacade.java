@@ -98,8 +98,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person addPerson(Person p
-    )
+    public Person addPerson(Person p)
     {
         EntityManager em = getEntityManager();
         try
@@ -115,8 +114,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person deletePerson(int id
-    )
+    public Person deletePerson(int id)
     {
         EntityManager em = getEntityManager();
         try
@@ -133,8 +131,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person updatePerson(Person p
-    )
+    public Person updatePerson(Person p)
     {
         EntityManager em = getEntityManager();
         try

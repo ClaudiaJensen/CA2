@@ -67,8 +67,6 @@ public class Phone implements Serializable {
         this.description = description;
     }
     
-    
-
     public int getId() {
         return id;
     }

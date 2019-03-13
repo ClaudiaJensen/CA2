@@ -44,7 +44,7 @@ public class Tester {
             Hobby h4 = new Hobby("Skydning","Motionist niveau");
             
             
-            Address ad1 = new Address("Århusgade 30", "Hjemmeadresse");
+            Address ad1 = new Address("Århusgade 30", "Hjemmeadress");
             Address ad2 = new Address("viborggade 20", "Hjemmeaddress");
             Address ad3 = new Address("Havnegade 11", "Hjemmeaddress");
             
