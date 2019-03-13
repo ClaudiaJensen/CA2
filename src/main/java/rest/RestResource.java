@@ -19,7 +19,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author claudia
  */
-@Path("rest")
+@Path("person")
 public class RestResource
 {
 

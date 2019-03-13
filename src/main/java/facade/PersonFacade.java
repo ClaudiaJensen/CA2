@@ -84,7 +84,7 @@ public class PersonFacade implements FacadeInterface
     @Override
     public int getCountPersonByHobby(Hobby hobby)
     {
-        EntityManager em = getEntityManager();
+//        EntityManager em = getEntityManager();
 //        try
 //        {
 //            Query q = em.createQuery("select size(h.persons) from Hobby h where h.name = :hobby", Integer.class);
