@@ -91,7 +91,7 @@ public class Tester {
         Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
             PersonFacade pf = new PersonFacade();
             Hobby res = pf.getHobbyById(2);
-//            System.out.println(pf.getPerson("777"));
+            System.out.println((pf.getPersonsByCity("København Ø")).get(0).getfName());
                     
         
     }

@@ -24,7 +24,10 @@ public class PersonDTO {
     
     private List<String> phones = new ArrayList();
     private List<String> hobbies = new ArrayList();
-    
+
+    public PersonDTO()
+    {
+    }
     
     
     public PersonDTO(Person p){
@@ -32,8 +35,6 @@ public class PersonDTO {
         this.email = p.getEmail();
         this.fName = p.getfName();
         this.lName = p.getlName();
-        this.phones = getPhones(p.getPhones());
-        this.hobbies = getHobbies(p.getHobbies()); 
     }
     
     public List<String> getPhones(List<Phone> pList){
@@ -53,4 +54,36 @@ public class PersonDTO {
         }
         return sList;
     }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getfName()
+    {
+        return fName;
+    }
+
+    public void setfName(String fName)
+    {
+        this.fName = fName;
+    }
+
+    public String getlName()
+    {
+        return lName;
+    }
+
+    public void setlName(String lName)
+    {
+        this.lName = lName;
+    }
+     
+     
 }
