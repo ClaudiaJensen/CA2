@@ -16,8 +16,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import entity.FacadeInterface;
-
-
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -25,17 +24,17 @@ import entity.FacadeInterface;
  */
 public class PersonFacade implements FacadeInterface
 {
-    
-     EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
-    
-     
-    public EntityManager getManager() {
+
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
+
+    public EntityManager getManager()
+    {
         return emf.createEntityManager();
     }
 
-    
-    
-    public PersonFacade(){}
+    public PersonFacade()
+    {
+    }
 
     public PersonFacade(EntityManagerFactory emf)
     {
@@ -48,45 +47,63 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person getPerson(String phoneNumber)
+    public PersonDTO getPerson(String phoneNumber)
     {
-        return getEntityManager().find(Person.class, phoneNumber);
+        EntityManager em = getEntityManager();
+        try
+        {
+            TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.phones ph where ph.number = :phonenumber", PersonDTO.class);
+            tq.setParameter("phonenumber", phoneNumber);
+            PersonDTO person = tq.getSingleResult();
+            return person;
+        } finally
+        {
+            em.close();
+        }
     }
 
     @Override
-    public List<Person> getPersonsByHobby(Hobby hobby)
+    public List<PersonDTO> getPersonsByHobby(String name)
     {
         EntityManager em = getEntityManager();
         try
         {
             Query q = em.createQuery("Select  p.email, p.fName, p.lName FROM Person p Where :hobby MEMBER of p.hobbies ");
-            q.setParameter("hobby", hobby);
-            List<Person> res = q.getResultList();
+            q.setParameter("hobby", name);
+            List<PersonDTO> res = q.getResultList();
             return res;
         } finally
         {
             em.close();
         }
     }
-    public Hobby getHobbyById(int id ){
-         EntityManager em = getEntityManager();
-    try{   
-           Hobby h = em.find(Hobby.class, id);
-           return h;
-        }finally{
-                 em.close();
-                }    
-    }
 
-    @Override
-    public List<Person> getPersonsByCity(String city)
+    public Hobby getHobbyById(int id)
     {
         EntityManager em = getEntityManager();
         try
         {
-            return em.createQuery("select new Person(p) From Person as p join p.addresses.cityInfo c where c.city = :city", Person.class).getResultList();
+            Hobby h = em.find(Hobby.class, id);
+            return h;
         } finally
         {
+            em.close();
+        }
+    }
+
+    @Override
+    public List<PersonDTO> getPersonsByCity(String city)
+    {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            TypedQuery<PersonDTO> q = em.createQuery(
+                    "SELECT DISTINCT new dto.PersonDTO(p) FROM Person p LEFT JOIN p.addresses.cityInfo c "
+                    + "WHERE c.city= :city", PersonDTO.class);
+            q.setParameter("city", city);
+            em.getTransaction().commit();
+            return q.getResultList();
+        } finally {
             em.close();
         }
     }
@@ -105,19 +122,21 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public int getCountPersonByHobby(Hobby hobby)
+    public int getCountPersonByHobby(String name)
     {
-//        EntityManager em = getEntityManager();
-//        try
-//        {
-//            Query q = em.createQuery("select size(h.persons) from Hobby h where h.name = :hobby", Integer.class);
-//            q.setParameter("hobby", hobby);
-//            //int res = q.getResultList();
-//        } finally
-//        {
-//            em.close();
-//        }
-        throw new UnsupportedOperationException();
+        EntityManager em = getEntityManager();
+        try
+        {
+            em.getTransaction().begin();
+            Query q = em.createQuery("select count(p) FROM Person p LEFT JOIN p.hobbies h "
+                    + "WHERE h.name = :name");
+            q.setParameter("name", name);
+            em.getTransaction().commit();
+            return (int) q.getSingleResult();
+        } finally
+        {
+            em.close();
+        }
     }
 
     @Override
@@ -168,13 +187,15 @@ public class PersonFacade implements FacadeInterface
             em.close();
         }
     }
-    
-    public List<PersonDTO> getAllPersonsDTO(){
+
+    public List<PersonDTO> getAllPersonsDTO()
+    {
         EntityManager em = getManager();
         List<PersonDTO> dtol = new ArrayList();
-        
+
         List<Person> cs = em.createQuery("SELECT p FROM Person p").getResultList();
-        for (Person c: cs){
+        for (Person c : cs)
+        {
             PersonDTO dto = new PersonDTO(c);
             dtol.add(dto);
         }

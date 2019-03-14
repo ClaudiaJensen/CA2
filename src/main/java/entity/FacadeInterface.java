@@ -5,6 +5,7 @@
  */
 package entity;
 
+import dto.PersonDTO;
 import java.util.List;
 
 /**
@@ -14,13 +15,13 @@ import java.util.List;
 public interface FacadeInterface
 {
 
-    public Person getPerson(String phoneNumber);
+    public PersonDTO getPerson(String phoneNumber);
 
-    public List<Person> getPersonsByHobby(Hobby hobby);
+    public List<PersonDTO> getPersonsByHobby(String name);
 
-    public List<Person> getPersonsByCity(String city);
+    public List<PersonDTO> getPersonsByCity(String city);
 
-    public int getCountPersonByHobby(Hobby hobby);
+    public int getCountPersonByHobby(String name);
 
     public List<CityInfo> getAllzipCodes();
 
