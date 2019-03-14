@@ -88,9 +88,9 @@ public class Tester {
         } finally {
             em.close();
         }
-        Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
-            PersonFacade pf = new PersonFacade();
-            Hobby res = pf.getHobbyById(2);
+//        Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
+//            PersonFacade pf = new PersonFacade();
+//            Hobby res = pf.getHobbyById(2);
 //            System.out.println(pf.getPerson("777"));
                     
         

@@ -19,6 +19,6 @@ public class AddressDTO {
     public AddressDTO(Address a){
         this.street = a.getStreet();
         this.additionalInfo = a.getAdditionalInfo();
-        this.cityInfo = "ZIP code: " + a.getCityInfo().getZipCode() + "City: " + a.getCityInfo().getCity();
+        this.cityInfo = "ZIP code: " + a.getCityInfo().getZip() + "City: " + a.getCityInfo().getCity();
     }
 }
