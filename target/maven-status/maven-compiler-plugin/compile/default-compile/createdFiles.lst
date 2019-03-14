@@ -1,0 +1,12 @@
+facade\PersonFacade.class
+entity\Phone.class
+dto\AddressDTO.class
+entity\Address.class
+entity\CityInfo.class
+rest\ApplicationConfig.class
+entity\Person.class
+dto\PersonDTO.class
+entity\FacadeInterface.class
+utils\Tester.class
+entity\Hobby.class
+rest\PersonResource.class
