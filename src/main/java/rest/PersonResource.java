@@ -7,6 +7,8 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dto.PersonDTO;
+import entity.Person;
 import facade.PersonFacade;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +43,11 @@ public class PersonResource {
 
     PersonFacade pf = new PersonFacade();
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getJson() {
+        return Response.ok().entity(gson.toJson(pf.getAllPersonsDTO())).build();
+    }
     
     @GET
     @Path("/complete")
@@ -49,10 +56,17 @@ public class PersonResource {
         return Response.ok().entity(gson.toJson(pf.getAllPersonsDTO())).build();
     }
 
+    
     @GET
+    @Path("/{phoneNumber}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getJson() {
-        return Response.ok().entity(gson.toJson(pf.getAllPersonsDTO())).build();
+    public Response getAllPersons(@PathParam("phoneNumber")String phoneNumber){
+        PersonDTO p = pf.getPerson(phoneNumber);
+//        if(p == null)
+//        {
+//            throw new WebApplicationException(Response.Status.INTERNAL_SERVER_ERROR);
+//        }
+        return Response.ok().entity(gson.toJson(p)).build();
     }
 }
 /*
