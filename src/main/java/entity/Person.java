@@ -39,12 +39,8 @@ public class Person implements Serializable {
    
    @ManyToMany(cascade = CascadeType.ALL)
    private final List<Hobby> hobbies = new ArrayList();
-   
-<<<<<<< HEAD (ac79442) - rest: complete metoden
-   @ManyToOne (cascade = CascadeType.PERSIST)
-=======
+
    @ManyToOne(cascade = CascadeType.PERSIST)
->>>>>>> e91679317c667f0d2a880dc110f8b09966ca3d7f
    private Address addresses;
    
     

@@ -6,7 +6,6 @@
 package facade;
 
 import dto.PersonDTO;
-import entity.BusinessLogic;
 import entity.CityInfo;
 import entity.Hobby;
 import entity.Person;
