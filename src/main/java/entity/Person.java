@@ -61,7 +61,6 @@ public class Person implements Serializable {
         this.lName = lName;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -104,6 +103,8 @@ public class Person implements Serializable {
    }
    
    public void addPhone(Phone p){
+       if(p.getPerson() == null) 
+       p.setPerson(this); //Fordi det er bidirectional 
        this.phones.add(p);
    }
    

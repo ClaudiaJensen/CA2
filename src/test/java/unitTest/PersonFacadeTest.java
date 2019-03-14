@@ -44,6 +44,15 @@ import static org.junit.Assert.*;
 //    @Test
 //    public void getHobbyByIdTest(){
 //        Hobby h = pf.getHobbyById(4);
+//        List<Person> list = pf.getPersonsByHobby(h);
+//        Assert.assertEquals(2,list.size());
+//        Assert.assertEquals("Dan", list.get(0).getfName());
+//        Assert.assertEquals("Perdersen", list.get(0).getlName());
+       
+//    }
+//    @Test
+//    public void getHobbyByIdTest(){
+//        Hobby h = pf.getHobbyById(4);
 //        String exp = "Golf";
 //        Assert.assertEquals(exp,h.getName());
 //    }

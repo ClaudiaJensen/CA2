@@ -103,6 +103,9 @@ public class Phone implements Serializable {
         this.person = person;
     }
 
-   
+    public Person getPerson()
+    {
+        return person;
+    }
     
 }
