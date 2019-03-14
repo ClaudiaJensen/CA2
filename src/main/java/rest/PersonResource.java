@@ -10,19 +10,10 @@ import com.google.gson.GsonBuilder;
 import dto.PersonDTO;
 import entity.Person;
 import facade.PersonFacade;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -55,12 +46,40 @@ public class PersonResource {
     public Response getPersons(){
         return Response.ok().entity(gson.toJson(pf.getAllPersonsDTO())).build();
     }
-
     
+     @GET
+    @Path("/allzip")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllZipcodes(){
+        return Response.ok().entity(gson.toJson(pf.getAllzipCodes())).build();
+    }
+    
+    
+    
+//    @GET
+//    @Path("/personsbyhobby")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response getPersonsByHobby(@PathParam("hobby")Hobby hobby){
+//        
+//        return Response.ok().entity(gson.toJson(pf.getPersonsByHobby(hobby))).build();
+//        
+//    }
+    /*
     @GET
     @Path("/{phoneNumber}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPersons(@PathParam("phoneNumber")String phoneNumber){
+        PersonDTO p = pf.getPerson(phoneNumber);
+    
+    return Response.ok().entity(gson.toJson(p)).build();
+    */
+    
+
+    
+    @GET
+    @Path("/getPersonByPhoneNumber")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPersonByPhoneNumber(@PathParam("phoneNumber")String phoneNumber){
         PersonDTO p = pf.getPerson(phoneNumber);
 //        if(p == null)
 //        {

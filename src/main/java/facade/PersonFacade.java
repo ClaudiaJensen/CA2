@@ -5,6 +5,7 @@
  */
 package facade;
 
+import dto.CityInfoDTO;
 import dto.PersonDTO;
 import entity.CityInfo;
 import entity.Hobby;
@@ -109,12 +110,19 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public List<CityInfo> getAllzipCodes()
+    public List<CityInfoDTO> getAllzipCodes()
     {
         EntityManager em = getEntityManager();
         try
         {
-            return em.createQuery("select c.zipCode FROM CityInfo c", CityInfo.class).getResultList();
+            List<CityInfoDTO> dtol = new ArrayList();
+            List<CityInfo> cl = em.createQuery("select c FROM CityInfo c", CityInfo.class).getResultList();
+            for (CityInfo c : cl){
+                CityInfoDTO dtoc = new CityInfoDTO(c);
+                dtol.add(dtoc);
+            }
+            return dtol;
+            
         } finally
         {
             em.close();

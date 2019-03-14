@@ -30,12 +30,12 @@ public class Tester {
             
         try {
             em.getTransaction().begin();
-            //Oprettelse
-            //Par 1
+           //  Oprettelse
+           // Par 1
             Person p1 = new Person("gh@yahoo.com", "Lene", "Hansen");
             Person p2 = new Person("kl@yahoo.com", "Dan", "Pedersen");
             
-            //par 2
+            // par 2
             Person p3 = new Person("min@yahoo.com", "kir", "Johnsen");
             Person p4 = new Person("din@yahoo.com", "Ib", "Jensen");
             
@@ -57,7 +57,7 @@ public class Tester {
             Phone ph3 = new Phone("999", "mobil");
             Phone ph4 = new Phone("444", "mobil");
             
-            //Adding
+         //   Adding
             ad1.setCityInfo(ci1);
             ad2.setCityInfo(ci2);
             ad3.setCityInfo(ci2);
@@ -88,10 +88,14 @@ public class Tester {
         } finally {
             em.close();
         }
-        Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
+        //Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
             PersonFacade pf = new PersonFacade();
-            Hobby res = pf.getHobbyById(2);
-            System.out.println(pf.getPerson("777").getfName());
+           // Hobby res = pf.getHobbyById(2);
+             System.out.println(pf.getPerson("777"));
+           //  System.out.println(pf.getAllPersonsDTO());
+                    
+        
+
     }
 }
 
