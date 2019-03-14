@@ -20,5 +20,6 @@ public class CityInfoDTO {
     public CityInfoDTO(CityInfo c){
         this.id = c.getId();
         this.zip = c.getZip();
+        this.city = c.getCity();
     }
 }
