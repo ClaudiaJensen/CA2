@@ -10,6 +10,7 @@ import entity.CityInfo;
 import entity.Hobby;
 import entity.Person;
 import entity.Phone;
+import facade.PersonFacade;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -51,10 +52,10 @@ public class Tester {
             CityInfo ci1 = new CityInfo(2100, "København Ø");
             CityInfo ci2 = new CityInfo(2000, "Århus C");
             
-            Phone ph1 = new Phone(777, "mobil");
-            Phone ph2 = new Phone(888, "mobil");
-            Phone ph3 = new Phone(999, "mobil");
-            Phone ph4 = new Phone(444, "mobil");
+            Phone ph1 = new Phone("777", "mobil");
+            Phone ph2 = new Phone("888", "mobil");
+            Phone ph3 = new Phone("999", "mobil");
+            Phone ph4 = new Phone("444", "mobil");
             
             //Adding
             ad1.setCityInfo(ci1);
@@ -87,7 +88,11 @@ public class Tester {
         } finally {
             em.close();
         }
-            
+        Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
+            PersonFacade pf = new PersonFacade();
+            Hobby res = pf.getHobbyById(2);
+//            System.out.println(pf.getPerson("777"));
+                    
         
     }
 }

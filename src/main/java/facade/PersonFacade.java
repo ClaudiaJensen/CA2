@@ -52,8 +52,8 @@ public class PersonFacade implements FacadeInterface
         EntityManager em = getEntityManager();
         try
         {
-            TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.phones ph where ph.number = :phonenumber", PersonDTO.class);
-            tq.setParameter("phonenumber", phoneNumber);
+            TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.phones ph where ph.number = :phoneNumber", PersonDTO.class);
+            tq.setParameter("phoneNumber", phoneNumber);
             PersonDTO person = tq.getSingleResult();
             return person;
         } finally
@@ -63,13 +63,13 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public List<PersonDTO> getPersonsByHobby(String name)
+    public List<PersonDTO> getPersonsByHobby(Hobby hobby)
     {
         EntityManager em = getEntityManager();
         try
         {
-            Query q = em.createQuery("Select  p.email, p.fName, p.lName FROM Person p Where :hobby MEMBER of p.hobbies ");
-            q.setParameter("hobby", name);
+            Query q = em.createQuery("Select p.email, p.fName, p.lName FROM Person p Where :hobby MEMBER of p.hobbies ");
+            q.setParameter("hobby", hobby);
             List<PersonDTO> res = q.getResultList();
             return res;
         } finally

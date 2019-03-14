@@ -24,14 +24,14 @@ public class Phone implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private Integer number;
+    private String number;
     private String description;
     
     
     @ManyToOne
     private Person person;
     
-    public Phone(int number, String description) {
+    public Phone(String number, String description) {
         this.number = number;
         this.description = description;
     }
@@ -45,7 +45,7 @@ public class Phone implements Serializable {
 //    }
 	
 
-    public Phone(int id, Integer number, String description) {
+    public Phone(int id, String number, String description) {
         this.id = id;
         this.number = number;
         this.description = description;
@@ -55,7 +55,7 @@ public class Phone implements Serializable {
         return serialVersionUID;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
@@ -63,7 +63,7 @@ public class Phone implements Serializable {
         return description;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
