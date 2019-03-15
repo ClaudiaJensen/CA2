@@ -5,6 +5,7 @@
  */
 package entity;
 
+import dto.CityInfoDTO;
 import dto.PersonDTO;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public interface FacadeInterface
 
     public int getCountPersonByHobby(String name);
 
-    public List<CityInfo> getAllzipCodes();
+    public List<CityInfoDTO> getAllzipCodes();
 
     //CRUD
     public Person addPerson(Person p);
