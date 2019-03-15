@@ -13,8 +13,7 @@ import java.util.List;
  *
  * @author claudia
  */
-public interface FacadeInterface
-{
+public interface FacadeInterface {
 
     public PersonDTO getPerson(String phoneNumber);
 
@@ -23,8 +22,8 @@ public interface FacadeInterface
     public List<PersonDTO> getPersonsByCity(String city);
 
     public List<PersonDTO> getPersonsByZip(Integer zip);
-    
-    public int getCountPersonByHobby(String name);
+
+    public int getPersonCountByHobby(String name);
 
     public List<CityInfoDTO> getAllzipCodes();
 
@@ -34,5 +33,5 @@ public interface FacadeInterface
     public Person deletePerson(int id);
 
     public Person updatePerson(Person p);
-    
+
 }

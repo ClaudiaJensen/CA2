@@ -5,6 +5,7 @@
  */
 package facade;
 
+
 import dto.CityInfoDTO;
 import dto.PersonDTO;
 import entity.CityInfo;
@@ -146,7 +147,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public int getCountPersonByHobby(String name)
+    public int getPersonCountByHobby(String name)
     {
         EntityManager em = getEntityManager();
         try

@@ -26,6 +26,7 @@ public class PersonDTO {
     private List<String> phones = new ArrayList();
     private List<String> hobbies = new ArrayList();
     
+    
    
 
     public PersonDTO() {
@@ -40,7 +41,6 @@ public class PersonDTO {
         this.phones = p.getPhones();
         this.hobbies = p.getHobbies();
         this.address = p.getAddress();
-
     }
 
     public List<String> getPhones() {
