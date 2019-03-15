@@ -122,7 +122,7 @@ public class Person implements Serializable {
         return hobbies;
     }
 
-    public Address getAddresses() {
+    public Address getAddress() {
         return addresses;
     }
    

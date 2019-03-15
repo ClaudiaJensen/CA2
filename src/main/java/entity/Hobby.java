@@ -72,6 +72,8 @@ public class Hobby implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
+    
+         
 
     public List<Person> getPersons()
     {
