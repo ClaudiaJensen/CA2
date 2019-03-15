@@ -21,10 +21,10 @@ public class PersonDTO {
     private String email;
     private String fName;
     private String lName;
+    private String address;
 
     private List<String> phones = new ArrayList();
     private List<String> hobbies = new ArrayList();
-    private String address;
     
    
 
