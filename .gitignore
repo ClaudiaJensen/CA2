@@ -125,4 +125,5 @@
 	/src/main/java/Connector/testMain.java
 	/nbproject/
 	/src/main/resources/META-INF/
+	*/target/*
 
