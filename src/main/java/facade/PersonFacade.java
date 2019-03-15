@@ -130,7 +130,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public int getCountPersonByHobby(String name)
+    public int getPersonCountByHobby(String name)
     {
         EntityManager em = getEntityManager();
         try

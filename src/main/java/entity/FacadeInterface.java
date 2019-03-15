@@ -23,7 +23,7 @@ public interface FacadeInterface
 
     public List<PersonDTO> getPersonsByCity(String city);
 
-    public int getCountPersonByHobby(String name);
+    public int getPersonCountByHobby(String name);
 
     public List<CityInfoDTO> getAllzipCodes();
 

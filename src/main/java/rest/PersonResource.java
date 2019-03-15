@@ -67,4 +67,14 @@ public class PersonResource {
     return Response.ok().entity(gson.toJson(p)).build();
      
     }
+    
+    @GET
+    @Path("countHobby/{hobby}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPersonCountByHobby(@PathParam("hobby") String hobby)
+    {
+        List<PersonDTO> p = pf.getPersonsByHobby(hobby);
+        return Response.ok().entity(gson.toJson(p)).build();
+    }
 }
+
