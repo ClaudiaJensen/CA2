@@ -74,9 +74,9 @@ public class PersonResource {
     
     
     @GET
-    @Path("/getPersonByPhoneNumber")
+    @Path("{phoneNumber}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getPersonByPhoneNumber(@QueryParam("phoneNumber") String phoneNumber) {
+    public Response getPersonByPhoneNumber(@PathParam("phoneNumber") String phoneNumber) {
         PersonDTO p = pf.getPerson(phoneNumber);
         /*     if (p == null)
         {
