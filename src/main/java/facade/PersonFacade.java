@@ -107,6 +107,23 @@ public class PersonFacade implements FacadeInterface
             em.close();
         }
     }
+    
+    @Override
+    public List<PersonDTO> getPersonsByZip(Integer zip)
+    {
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            TypedQuery<PersonDTO> q = em.createQuery(
+                    "SELECT DISTINCT new dto.PersonDTO(p) FROM Person p LEFT JOIN p.addresses.cityInfo c "
+                    + "WHERE c.zip= :zip", PersonDTO.class);
+            q.setParameter("zip", zip);
+            em.getTransaction().commit();
+            return q.getResultList();
+        } finally {
+            em.close();
+        }
+    }
 
     @Override
     public List<CityInfoDTO> getAllzipCodes()

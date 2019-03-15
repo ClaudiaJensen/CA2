@@ -22,6 +22,8 @@ public interface FacadeInterface
 
     public List<PersonDTO> getPersonsByCity(String city);
 
+    public List<PersonDTO> getPersonsByZip(Integer zip);
+    
     public int getCountPersonByHobby(String name);
 
     public List<CityInfoDTO> getAllzipCodes();
