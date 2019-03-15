@@ -5,6 +5,7 @@
  */
 package entity;
 
+
 import dto.CityInfoDTO;
 import dto.PersonDTO;
 import java.util.List;

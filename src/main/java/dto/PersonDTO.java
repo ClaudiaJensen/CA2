@@ -24,7 +24,7 @@ public class PersonDTO {
     
     private List<String> phones = new ArrayList();
     private List<String> hobbies = new ArrayList();
-    private String address;
+    private AddressDTO address;
     
    
 
@@ -40,7 +40,7 @@ public class PersonDTO {
         this.lName = p.getlName();
         this.phones = getPhones(p.getPhones());
         this.hobbies = getHobbies(p.getHobbies());
-        this.address = "StreetName: " + p.getAddress().getStreet() + " info: " + p.getAddress().getAdditionalInfo() + " city: " + p.getAddress().getCityInfo().getCity() + " ZIP. " + p.getAddress().getCityInfo().getZip();
+        this.address = new AddressDTO(p.getAddress());
     }
     public List<String> getPhones(List<Phone> pList){
         List<String> sList = new ArrayList();
