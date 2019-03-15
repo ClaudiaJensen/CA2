@@ -63,12 +63,8 @@ public class PersonResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getPersonByPhoneNumber(@PathParam("phoneNumber") String phoneNumber) {
         PersonDTO p = pf.getPerson(phoneNumber);
-        /*     if (p == null)
-        {
-
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }
-         */
-        return Response.ok().entity(gson.toJson(p)).build();
+    
+    return Response.ok().entity(gson.toJson(p)).build();
+     
     }
 }

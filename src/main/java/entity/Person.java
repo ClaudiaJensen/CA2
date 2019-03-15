@@ -117,8 +117,16 @@ public class Person implements Serializable {
     }
 
 
-    public Address getAddresses() {
+    public String getAddress() {
+
+        return "StreetName: " + addresses.getStreet() + " info: " + addresses.getAdditionalInfo() + " city: " + addresses.getCityInfo().getCity() + " ZIP. " + addresses.getCityInfo().getZip();
+    
+    }
+    
+    public Address getAddressObject() {
+
         return addresses;
+    
     }
 
     public List<String> getPhones() {
