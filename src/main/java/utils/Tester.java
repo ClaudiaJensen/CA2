@@ -22,7 +22,7 @@ import javax.persistence.Persistence;
 public class Tester {
    
     public static void main(String[] args) {
-        Persistence.generateSchema("pu", null);
+        // Persistence.generateSchema("pu", null);
      
        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
@@ -88,11 +88,11 @@ public class Tester {
         } finally {
             em.close();
         }
-        //Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
-        //    PersonFacade pf = new PersonFacade();
-           // Hobby res = pf.getHobbyById(2);
-          //   System.out.println(pf.getPerson("777"));
-           //  System.out.println(pf.getAllPersonsDTO());
+//        //Person p1 = new Person("jh@yahoo.com", "Lone", "Hansen");
+//            PersonFacade pf = new PersonFacade();
+//           // Hobby res = pf.getHobbyById(2);
+//             System.out.println(pf.getPerson("777"));
+//           //  System.out.println(pf.getAllPersonsDTO());
                     
         
 

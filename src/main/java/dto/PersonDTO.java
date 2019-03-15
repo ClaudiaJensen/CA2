@@ -24,6 +24,9 @@ public class PersonDTO {
     
     private List<String> phones = new ArrayList();
     private List<String> hobbies = new ArrayList();
+    private String address;
+    
+   
 
     public PersonDTO()
     {
@@ -35,12 +38,14 @@ public class PersonDTO {
         this.email = p.getEmail();
         this.fName = p.getfName();
         this.lName = p.getlName();
+        this.phones = getPhones(p.getPhones());
+        this.hobbies = getHobbies(p.getHobbies());
+        this.address = "StreetName: " + p.getAddress().getStreet() + " info: " + p.getAddress().getAdditionalInfo() + " city: " + p.getAddress().getCityInfo().getCity() + " ZIP. " + p.getAddress().getCityInfo().getZip();
     }
-    
     public List<String> getPhones(List<Phone> pList){
         List<String> sList = new ArrayList();
         for (Phone p: pList){
-            String s = "PhoneNumber: " + p.getNumber().toString() + "description: " + p.getDescription() + "  ";
+            String s = "PhoneNumber: " + p.getNumber().toString() + " description: " + p.getDescription() + "  ";
             sList.add(s);
         }
         return sList;
@@ -49,7 +54,7 @@ public class PersonDTO {
      public List<String> getHobbies(List<Hobby> hList){
         List<String> sList = new ArrayList();
         for (Hobby h: hList){
-            String s = "Name: " + h.getName() + "description: " + h.getDescription() + "  ";
+            String s = "Name: " + h.getName() + " description: " + h.getDescription() + "  ";
             sList.add(s);
         }
         return sList;

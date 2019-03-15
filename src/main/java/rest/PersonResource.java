@@ -54,39 +54,40 @@ public class PersonResource {
         return Response.ok().entity(gson.toJson(pf.getAllzipCodes())).build();
     }
 
-//    @GET
-//    @Path("/personsbyhobby")
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response getPersonsByHobby(@PathParam("hobby")Hobby hobby){
-//        
-//        return Response.ok().entity(gson.toJson(pf.getPersonsByHobby(hobby))).build();
-//        
-//    }
-    /*
     @GET
-    @Path("/{phoneNumber}")
+    @Path("/hobby/{hobby}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPersonsByHobby(@PathParam("hobby")String hobby){
+        
+        return Response.ok().entity(gson.toJson(pf.getPersonsByHobby(hobby))).build();
+        
+    }
+    
+    @GET
+    @Path("{phoneNumber}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllPersons(@PathParam("phoneNumber")String phoneNumber){
         PersonDTO p = pf.getPerson(phoneNumber);
     
     return Response.ok().entity(gson.toJson(p)).build();
-     */
-    
-    
-    @GET
-    @Path("/getPersonByPhoneNumber")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getPersonByPhoneNumber(@QueryParam("phoneNumber") String phoneNumber) {
-        PersonDTO p = pf.getPerson(phoneNumber);
-        /*     if (p == null)
-        {
-
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }
-         */
-        return Response.ok().entity(gson.toJson(p)).build();
+     
     }
 }
+    
+//    @GET
+//    @Path("/getPersonByPhoneNumber")
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response getPersonByPhoneNumber(@QueryParam("phoneNumber") String phoneNumber) {
+//        PersonDTO p = pf.getPerson(phoneNumber);
+//        /*     if (p == null)
+//        {
+//
+//            throw new WebApplicationException(Response.Status.NOT_FOUND);
+//        }
+//         */
+//        return Response.ok().entity(gson.toJson(p)).build();
+//    }
+// }
 /*
     // SImple method to see if the service is running. Test with: /api/customer
     @GET

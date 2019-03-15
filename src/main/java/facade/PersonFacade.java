@@ -64,7 +64,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public List<PersonDTO> getPersonsByHobby(Hobby hobby)
+    public List<PersonDTO> getPersonsByHobby(String hobby)
     {
         EntityManager em = getEntityManager();
         try
@@ -209,5 +209,7 @@ public class PersonFacade implements FacadeInterface
         }
         return dtol;
     }
+    
+    
 
 }
