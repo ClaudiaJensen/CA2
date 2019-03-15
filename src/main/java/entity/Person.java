@@ -34,16 +34,15 @@ public class Person implements Serializable {
     private String fName;
     private String lName;
 
-   @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
-   private final List<Phone> phones = new ArrayList();
-   
-   @ManyToMany(cascade = CascadeType.ALL)
-   private final List<Hobby> hobbies = new ArrayList();
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private final List<Phone> phones = new ArrayList();
 
-   @ManyToOne(cascade = CascadeType.PERSIST)
-   private Address addresses;
-   
-    
+    @ManyToMany(cascade = CascadeType.ALL)
+    private final List<Hobby> hobbies = new ArrayList();
+
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Address addresses;
+
     public Person() {
     }
 
@@ -52,7 +51,6 @@ public class Person implements Serializable {
         this.fName = fName;
         this.lName = lName;
     }
-    
 
     public Person(int id, String email, String fName, String lName) {
         this.id = id;
@@ -84,7 +82,7 @@ public class Person implements Serializable {
     public void setlName(String lName) {
         this.lName = lName;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -98,32 +96,70 @@ public class Person implements Serializable {
         return "Entitys.Person[ id=" + id + " ]";
     }
 
-   public void addHobby(Hobby h){
-       if(h.getPersons() == null) 
-       h.addPerson(this); //Fordi det er bidirectional 
-       this.hobbies.add(h);
-   }
-   
-   public void addPhone(Phone p){
-       if(p.getPerson() == null) 
-       p.setPerson(this); //Fordi det er bidirectional 
-       this.phones.add(p);
-   }
-   
-   public void setAddress(Address a){
-       this.addresses = a;
-   }
+    public void addHobby(Hobby h) {
+        if (h.getPersons() == null)
+        {
+            h.addPerson(this); //Fordi det er bidirectional 
+        }
+        this.hobbies.add(h);
+    }
 
-    public List<Phone> getPhones() {
+    public void addPhone(Phone p) {
+        if (p.getPerson() == null)
+        {
+            p.setPerson(this); //Fordi det er bidirectional 
+        }
+        this.phones.add(p);
+    }
+
+    public void setAddress(Address a) {
+        this.addresses = a;
+    }
+
+
+    public String getAddress() {
+
+        return "StreetName: " + addresses.getStreet() + " info: " + addresses.getAdditionalInfo() + " city: " + addresses.getCityInfo().getCity() + " ZIP. " + addresses.getCityInfo().getZip();
+    
+    }
+    
+    public Address getAddressObject() {
+
+        return addresses;
+    
+    }
+
+    public List<String> getPhones() {
+        List<String> sList = new ArrayList();
+        for (Phone p : this.phones)
+        {
+            String s = "PhoneNumber: " + p.getNumber() + "description: " + p.getDescription() + "  ";
+            sList.add(s);
+        }
+        return sList;
+    }
+
+    public List<String> getHobbies() {
+        List<String> sList = new ArrayList();
+        for (Hobby h : hobbies)
+        {
+            String s = "Name: " + h.getName() + "description: " + h.getDescription() + "  ";
+            sList.add(s);
+        }
+        return sList;
+    }
+    
+    public List<Phone> getPhonesObject() {
         return phones;
     }
 
-    public List<Hobby> getHobbies() {
+    public List<Hobby> getHobbiesObject() {
         return hobbies;
     }
 
-    public Address getAddress() {
-        return addresses;
-    }
-   
+    
+    
+    
+    
+    
 }

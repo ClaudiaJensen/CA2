@@ -21,74 +21,77 @@ public class PersonDTO {
     private String email;
     private String fName;
     private String lName;
-    
+    private String address;
+
     private List<String> phones = new ArrayList();
     private List<String> hobbies = new ArrayList();
-    private String address;
     
    
 
-    public PersonDTO()
-    {
+    public PersonDTO() {
     }
-    
-    
-    public PersonDTO(Person p){
+
+    public PersonDTO(Person p) {
         this.id = p.getId();
         this.email = p.getEmail();
         this.fName = p.getfName();
         this.lName = p.getlName();
-        this.phones = getPhones(p.getPhones());
-        this.hobbies = getHobbies(p.getHobbies());
-        this.address = "StreetName: " + p.getAddress().getStreet() + " info: " + p.getAddress().getAdditionalInfo() + " city: " + p.getAddress().getCityInfo().getCity() + " ZIP. " + p.getAddress().getCityInfo().getZip();
-    }
-    public List<String> getPhones(List<Phone> pList){
-        List<String> sList = new ArrayList();
-        for (Phone p: pList){
-            String s = "PhoneNumber: " + p.getNumber().toString() + " description: " + p.getDescription() + "  ";
-            sList.add(s);
-        }
-        return sList;
-    }
-    
-     public List<String> getHobbies(List<Hobby> hList){
-        List<String> sList = new ArrayList();
-        for (Hobby h: hList){
-            String s = "Name: " + h.getName() + " description: " + h.getDescription() + "  ";
-            sList.add(s);
-        }
-        return sList;
+
+        this.phones = p.getPhones();
+        this.hobbies = p.getHobbies();
+        this.address = p.getAddress();
+
     }
 
-    public String getEmail()
-    {
+    public List<String> getPhones() {
+        return phones;
+    }
+
+    public List<String> getHobbies() {
+        return hobbies;
+
+    }
+
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getfName()
-    {
+    public String getfName() {
         return fName;
     }
 
-    public void setfName(String fName)
-    {
+    public void setfName(String fName) {
         this.fName = fName;
     }
 
-    public String getlName()
-    {
+    public String getlName() {
         return lName;
     }
 
-    public void setlName(String lName)
-    {
+    public void setlName(String lName) {
         this.lName = lName;
     }
-     
-     
+
+    public void setPhones(List<String> phones) {
+        this.phones = phones;
+    }
+
+    public void setHobbies(List<String> hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
+    
+
 }
