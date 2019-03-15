@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application
      */
     private void addRestResourceClasses(Set<Class<?>> resources)
     {
+        resources.add(cors.CorsFilter.class);
         resources.add(rest.PersonResource.class);
     }
     

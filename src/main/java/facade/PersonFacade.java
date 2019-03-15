@@ -67,12 +67,11 @@ public class PersonFacade implements FacadeInterface
     public List<PersonDTO> getPersonsByHobby(String hobby)
     {
         EntityManager em = getEntityManager();
-        try
-        {
-            Query q = em.createQuery("Select p.email, p.fName, p.lName FROM Person p Where :hobby MEMBER of p.hobbies ");
-            q.setParameter("hobby", hobby);
-            List<PersonDTO> res = q.getResultList();
-            return res;
+            try {
+            TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.hobbies h where h.name = :hobby", PersonDTO.class);
+            tq.setParameter("hobby", hobby);
+            return tq.getResultList();
+
         } finally
         {
             em.close();
