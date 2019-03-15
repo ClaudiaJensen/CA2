@@ -40,7 +40,7 @@ public class PersonDTO {
     public List<String> getPhones(List<Phone> pList){
         List<String> sList = new ArrayList();
         for (Phone p: pList){
-            String s = "PhoneNumber: " + p.getNumber().toString() + "description: " + p.getDescription() + "  ";
+            String s = "PhoneNumber: " + p.getNumber() + "description: " + p.getDescription() + "  ";
             sList.add(s);
         }
         return sList;

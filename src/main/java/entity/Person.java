@@ -99,6 +99,8 @@ public class Person implements Serializable {
     }
 
    public void addHobby(Hobby h){
+       if(h.getPersons() == null) 
+       h.addPerson(this); //Fordi det er bidirectional 
        this.hobbies.add(h);
    }
    
