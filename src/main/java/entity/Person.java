@@ -119,7 +119,7 @@ public class Person implements Serializable {
 
     public String getAddress() {
 
-        return "StreetName: " + addresses.getStreet() + " info: " + addresses.getAdditionalInfo() + " city: " + addresses.getCityInfo().getCity() + " ZIP. " + addresses.getCityInfo().getZip();
+        return "StreetName: " + addresses.getStreet() + " info: " + addresses.getAdditionalInfo() + " city: " + addresses.getCityInfo().getCity() + " ZIP: " + addresses.getCityInfo().getZip();
     
     }
     
@@ -133,7 +133,7 @@ public class Person implements Serializable {
         List<String> sList = new ArrayList();
         for (Phone p : this.phones)
         {
-            String s = "PhoneNumber: " + p.getNumber() + "description: " + p.getDescription() + "  ";
+            String s = "PhoneNumber: " + p.getNumber() + " description: " + p.getDescription() + "  ";
             sList.add(s);
         }
         return sList;
@@ -143,7 +143,7 @@ public class Person implements Serializable {
         List<String> sList = new ArrayList();
         for (Hobby h : hobbies)
         {
-            String s = "Name: " + h.getName() + "description: " + h.getDescription() + "  ";
+            String s = "Name: " + h.getName() + " description: " + h.getDescription() + "  ";
             sList.add(s);
         }
         return sList;
