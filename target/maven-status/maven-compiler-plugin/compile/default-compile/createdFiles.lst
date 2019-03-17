@@ -1,7 +1,0 @@
-dto\CityInfoDTO.class
-entity\Address.class
-entity\CityInfo.class
-cors\CorsFilter.class
-entity\Hobby.class
-rest\PersonResource.class
-dto\AddressDTO.class
