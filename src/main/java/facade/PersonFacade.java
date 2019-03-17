@@ -17,6 +17,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import entity.FacadeInterface;
+import exception.MyException;
 import javax.persistence.TypedQuery;
 
 /**
@@ -56,6 +57,9 @@ public class PersonFacade implements FacadeInterface
             TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.phones ph where ph.number = :phoneNumber", PersonDTO.class);
             tq.setParameter("phoneNumber", phoneNumber);
             PersonDTO person = tq.getSingleResult();
+            if (person == null) {
+                throw new MyException("Could not find person with that number");
+            }
             return person;
         } finally
         {
@@ -70,6 +74,9 @@ public class PersonFacade implements FacadeInterface
             try {
             TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.hobbies h where h.name = :hobby", PersonDTO.class);
             tq.setParameter("hobby", hobby);
+            if (hobby == null) {
+                throw new MyException("Could not find any persons with that hobby");
+            }
             return tq.getResultList();
 
         } finally
@@ -84,6 +91,9 @@ public class PersonFacade implements FacadeInterface
         try
         {
             Hobby h = em.find(Hobby.class, id);
+            if (h == null) {
+                throw new MyException("Could not find any hobbies matching the id");
+            }
             return h;
         } finally
         {
@@ -102,6 +112,9 @@ public class PersonFacade implements FacadeInterface
                     + "WHERE c.city= :city", PersonDTO.class);
             q.setParameter("city", city);
             em.getTransaction().commit();
+            if (city == null) {
+                throw new MyException("Could not find any persons living in that city");
+            }
             return q.getResultList();
         } finally {
             em.close();
@@ -119,6 +132,9 @@ public class PersonFacade implements FacadeInterface
             for (CityInfo c : cl){
                 CityInfoDTO dtoc = new CityInfoDTO(c);
                 dtol.add(dtoc);
+            }
+            if (dtol == null) {
+                throw new MyException("Could not find any zipcodes");
             }
             return dtol;
             
@@ -139,6 +155,9 @@ public class PersonFacade implements FacadeInterface
                     + "WHERE h.name = :name");
             q.setParameter("name", name);
             em.getTransaction().commit();
+            if (name == null) {
+                throw new MyException("Could not find any persons with that hobby");
+            }
             return (int) q.getSingleResult();
         } finally
         {
@@ -155,6 +174,9 @@ public class PersonFacade implements FacadeInterface
             em.getTransaction().begin();
             em.persist(p);
             em.getTransaction().commit();
+            if (p == null) {
+                throw new MyException("Could not add person");
+            }
             return p;
         } finally
         {
@@ -172,6 +194,9 @@ public class PersonFacade implements FacadeInterface
             Person p = em.find(Person.class, id);
             em.remove(p);
             em.getTransaction().commit();
+            if (p == null) {
+                throw new MyException("Could not delete person");
+            }
             return p;
         } finally
         {
@@ -188,6 +213,9 @@ public class PersonFacade implements FacadeInterface
             em.getTransaction().begin();
             em.merge(p);
             em.getTransaction().commit();
+            if (p == null) {
+                throw new MyException("Could not update person");
+            }
             return p;
         } finally
         {
@@ -206,6 +234,9 @@ public class PersonFacade implements FacadeInterface
             PersonDTO dto = new PersonDTO(c);
             dtol.add(dto);
         }
+        if (dtol == null) {
+                throw new MyException("Could not find any persons");
+            }
         return dtol;
     }
     
