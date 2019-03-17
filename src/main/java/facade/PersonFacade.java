@@ -59,7 +59,7 @@ public class PersonFacade implements FacadeInterface
             tq.setParameter("phoneNumber", phoneNumber);
             PersonDTO person = tq.getSingleResult();
             if (person == null) {
-                throw new MyException("Could not find person with that number");
+                throw new MyException("Could not find person with that number", 404);
             }
             return person;
         } finally
@@ -76,7 +76,7 @@ public class PersonFacade implements FacadeInterface
             TypedQuery<PersonDTO> tq = em.createQuery("select new dto.PersonDTO(p) From Person as p join p.hobbies h where h.name = :hobby", PersonDTO.class);
             tq.setParameter("hobby", hobby);
             if (hobby == null) {
-                throw new MyException("Could not find any persons with that hobby");
+                throw new MyException("Could not find any persons with that hobby", 404);
             }
             return tq.getResultList();
 
@@ -93,7 +93,7 @@ public class PersonFacade implements FacadeInterface
         {
             Hobby h = em.find(Hobby.class, id);
             if (h == null) {
-                throw new MyException("Could not find any hobbies matching the id");
+                throw new MyException("Could not find any hobbies matching the id", 404);
             }
             return h;
         } finally
@@ -114,7 +114,7 @@ public class PersonFacade implements FacadeInterface
             q.setParameter("city", city);
             em.getTransaction().commit();
             if (city == null) {
-                throw new MyException("Could not find any persons living in that city");
+                throw new MyException("Could not find any persons living in that city", 404);
             }
             return q.getResultList();
         } finally {
@@ -133,6 +133,9 @@ public class PersonFacade implements FacadeInterface
                     + "WHERE c.zip= :zip", PersonDTO.class);
             q.setParameter("zip", zip);
             em.getTransaction().commit();
+            if (zip == null) {
+                throw new MyException("Could not find any persons with that zipcode", 404);
+            }
             return q.getResultList();
         } finally {
             em.close();
@@ -152,7 +155,7 @@ public class PersonFacade implements FacadeInterface
                 dtol.add(dtoc);
             }
             if (dtol == null) {
-                throw new MyException("Could not find any zipcodes");
+                throw new MyException("Could not find any zipcodes", 404);
             }
             return dtol;
             
@@ -174,7 +177,7 @@ public class PersonFacade implements FacadeInterface
             q.setParameter("name", name);
             em.getTransaction().commit();
             if (name == null) {
-                throw new MyException("Could not find any persons with that hobby");
+                throw new MyException("Could not find any persons with that hobby", 404);
             }
             return (int) q.getSingleResult();
         } finally
@@ -193,7 +196,7 @@ public class PersonFacade implements FacadeInterface
             em.persist(p);
             em.getTransaction().commit();
             if (p == null) {
-                throw new MyException("Could not add person");
+                throw new MyException("Could not add person", 404);
             }
             return p;
         } finally
@@ -213,7 +216,7 @@ public class PersonFacade implements FacadeInterface
             em.remove(p);
             em.getTransaction().commit();
             if (p == null) {
-                throw new MyException("Could not delete person");
+                throw new MyException("Could not delete person", 404);
             }
             return p;
         } finally
@@ -232,7 +235,7 @@ public class PersonFacade implements FacadeInterface
             em.merge(p);
             em.getTransaction().commit();
             if (p == null) {
-                throw new MyException("Could not update person");
+                throw new MyException("Could not update person", 404);
             }
             return p;
         } finally
@@ -253,7 +256,7 @@ public class PersonFacade implements FacadeInterface
             dtol.add(dto);
         }
         if (dtol == null) {
-                throw new MyException("Could not find any persons");
+                throw new MyException("Could not find any persons", 404);
             }
         return dtol;
     }

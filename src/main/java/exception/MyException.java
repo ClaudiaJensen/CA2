@@ -5,7 +5,10 @@
  */
 package exception;
 
+import com.google.gson.Gson;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -14,8 +17,27 @@ import javax.ws.rs.WebApplicationException;
 public class MyException extends WebApplicationException
 {
 
-    public MyException(String message)
+    private int errorCode;
+    private Gson gson = new Gson();
+
+    public MyException(String message, int errorCode)
     {
         super(message);
+        this.errorCode = errorCode;
+    }
+
+    public MyException()
+    {
+        super();
+    }
+
+    public int getErrorCode()
+    {
+        return errorCode;
+    }
+
+    public Response toResponse(MyException exception)
+    {
+        return Response.status(404).entity(gson.toJson(exception)).type(MediaType.APPLICATION_JSON).build();
     }
 }
