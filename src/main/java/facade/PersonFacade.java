@@ -50,7 +50,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public PersonDTO getPerson(String phoneNumber)
+    public PersonDTO getPerson(String phoneNumber) throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -69,7 +69,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public List<PersonDTO> getPersonsByHobby(String hobby)
+    public List<PersonDTO> getPersonsByHobby(String hobby) throws MyException
     {
         EntityManager em = getEntityManager();
             try {
@@ -86,7 +86,7 @@ public class PersonFacade implements FacadeInterface
         }
     }
 
-    public Hobby getHobbyById(int id)
+    public Hobby getHobbyById(int id) throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -103,7 +103,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public List<PersonDTO> getPersonsByCity(String city)
+    public List<PersonDTO> getPersonsByCity(String city) throws MyException
     {
         EntityManager em = getEntityManager();
         try {
@@ -123,7 +123,7 @@ public class PersonFacade implements FacadeInterface
     }
     
     @Override
-    public List<PersonDTO> getPersonsByZip(Integer zip)
+    public List<PersonDTO> getPersonsByZip(Integer zip) throws MyException
     {
         EntityManager em = getEntityManager();
         try {
@@ -143,7 +143,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public List<CityInfoDTO> getAllzipCodes()
+    public List<CityInfoDTO> getAllzipCodes() throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -166,7 +166,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public int getPersonCountByHobby(String name)
+    public int getPersonCountByHobby(String name) throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -187,7 +187,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person addPerson(Person p)
+    public Person addPerson(Person p) throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -206,7 +206,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person deletePerson(int id)
+    public Person deletePerson(int id) throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -226,7 +226,7 @@ public class PersonFacade implements FacadeInterface
     }
 
     @Override
-    public Person updatePerson(Person p)
+    public Person updatePerson(Person p) throws MyException
     {
         EntityManager em = getEntityManager();
         try
@@ -244,7 +244,7 @@ public class PersonFacade implements FacadeInterface
         }
     }
 
-    public List<PersonDTO> getAllPersonsDTO()
+    public List<PersonDTO> getAllPersonsDTO() throws MyException
     {
         EntityManager em = getManager();
         List<PersonDTO> dtol = new ArrayList();
